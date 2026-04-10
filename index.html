@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Kismo Coffee House | Book Menu & Kopi Malang</title>
+    <meta name="description" content="Kismo Coffee House – Tempat nongkrong, work from cafe di Malang. Menu lengkap dalam bentuk digital book, klik untuk perbesar. Kopi specialty, homey aesthetic.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8F0;
+            --warm-beige: #F5E6D3;
+            --brown: #6B3E2C;
+            --brown-light: #A87B5A;
+            --cocoa: #4A2A1E;
+            --gold: #D4A373;
+            --dark-bg: #2A241F;
+            --text-dark: #2C241E;
+            --text-soft: #5A4A3C;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 35px rgba(0,0,0,0.1);
+            --radius: 28px;
+            --radius-card: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER & NAVBAR ========== */
+        header {
+            background: rgba(255, 248, 240, 0.96);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(107, 62, 44, 0.15);
+            padding: 14px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--brown);
+        }
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+        .logo span {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--gold) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: 0.2s;
+            font-size: 0.95rem;
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brown);
+            border-bottom-color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--brown);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 24px;
+                border-radius: 28px;
+                margin-top: 20px;
+                gap: 18px;
+                box-shadow: var(--shadow);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                text-align: center;
+                font-size: 1rem;
+            }
+            .container {
+                padding: 0 18px;
+            }
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background: var(--brown);
+            color: white;
+            box-shadow: 0 4px 12px rgba(107,62,44,0.2);
+        }
+        .btn-primary:hover {
+            background: var(--cocoa);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(107,62,44,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--brown);
+            color: var(--brown);
+        }
+        .btn-outline:hover {
+            background: var(--brown);
+            color: white;
+        }
+        .btn-wa {
+            background: #25D366;
+            color: white;
+        }
+        .btn-wa:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(107deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center 30%;
+            border-radius: 0 0 36px 36px;
+            padding: 100px 0;
+            margin-bottom: 20px;
+        }
+        .hero-content {
+            max-width: 650px;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(6px);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 70px 0; }
+            .hero-content h1 { font-size: 2.4rem; }
+        }
+
+        /* ========== SECTION STYLES ========== */
+        .section {
+            padding: 70px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--brown);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        .section-title p {
+            color: var(--text-soft);
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+
+        /* features */
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .feature-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        /* MENU GRID KHUSUS MENU BOOK (image pages) */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 28px;
+        }
+        .menu-card {
+            background: white;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            background: #fff;
+        }
+        .menu-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .menu-img {
+            width: 100%;
+            background: #f3ede7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .menu-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .menu-card:hover .menu-img img {
+            transform: scale(1.02);
+        }
+        .menu-info {
+            padding: 12px 16px 16px;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        .menu-category {
+            font-size: 0.7rem;
+            color: var(--gold);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .page-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--brown-light);
+        }
+
+        /* ========== GALLERY AMBIANCE (OOB style) ========== */
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            grid-auto-flow: dense;
+        }
+        .gallery-item.large {
+            grid-column: span 2;
+        }
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+        @media (max-width: 768px) {
+            .gallery-masonry {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-item.large {
+                grid-column: span 2;
+            }
+            .gallery-item.tall {
+                grid-row: span 2;
+            }
+        }
+        @media (max-width: 580px) {
+            .gallery-masonry {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item.large,
+            .gallery-item.tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #f0e4d4;
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 28px rgba(0,0,0,0.12);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+            aspect-ratio: 1 / 1;
+        }
+        .gallery-item.large img {
+            aspect-ratio: 2 / 1.2;
+        }
+        .gallery-item.tall img {
+            aspect-ratio: 1 / 1.4;
+        }
+        @media (max-width: 768px) {
+            .gallery-item.large img,
+            .gallery-item.tall img {
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        /* TESTIMONI */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .testi-card {
+            background: white;
+            padding: 24px;
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+        }
+        .testi-text {
+            font-style: normal;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #3e2c1c;
+        }
+        .testi-author {
+            font-weight: 700;
+            color: var(--brown);
+        }
+        .rating {
+            margin-top: 12px;
+            color: var(--gold);
+        }
+
+        /* CONTACT & MAP */
+        .contact-row {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-info .info-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--warm-beige);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brown);
+            font-size: 1.2rem;
+        }
+        .map-container {
+            flex: 1.2;
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 300px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: 0;
+        }
+        @media (max-width: 768px) {
+            .contact-row { flex-direction: column; }
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: #e2d4c8;
+            padding: 40px 0 24px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.6s cubic-bezier(0.2, 0.8, 0.4, 1);
+        }
+        .scroll-animation.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .float-wa {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: 0.2s;
+        }
+        .float-wa:hover {
+            transform: scale(1.08);
+        }
+        .float-wa a {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+        @media (max-width: 480px) {
+            .float-wa { width: 48px; height: 48px; font-size: 24px; bottom: 16px; right: 16px; }
+        }
+
+        /* LIGHTBOX MODAL untuk menu book */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+        .lightbox-modal.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            cursor: default;
+        }
+        .lightbox-content img {
+            width: auto;
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,240,0.2);
+        }
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 32px;
+            color: white;
+            background: rgba(0,0,0,0.6);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-lightbox:hover {
+            background: var(--brown);
+            transform: scale(1.05);
+        }
+        .nav-lightbox {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 10;
+        }
+        .nav-lightbox.prev {
+            left: -70px;
+        }
+        .nav-lightbox.next {
+            right: -70px;
+        }
+        .nav-lightbox:hover {
+            background: var(--gold);
+            color: #2c241e;
+        }
+        @media (max-width: 768px) {
+            .nav-lightbox.prev { left: 10px; }
+            .nav-lightbox.next { right: 10px; }
+            .close-lightbox { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="float-wa">
+        <a href="https://wa.me/6282233404040?text=Halo%20Kismo%20Coffee%20House" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Lightbox Modal (zoom menu book) -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Menu Kismo Coffee">
+            <div class="close-lightbox" id="closeLightbox"><i class="fas fa-times"></i></div>
+            <div class="nav-lightbox prev" id="prevImageBtn"><i class="fas fa-chevron-left"></i></div>
+            <div class="nav-lightbox next" id="nextImageBtn"><i class="fas fa-chevron-right"></i></div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="#" class="logo" data-nav="home">
+                    <i class="fas fa-mug-hot"></i>
+                    <span>Kismo</span> Coffee
+                </a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" data-nav="home">Beranda</a></li>
+                    <li><a href="#" data-nav="menu">Book Menu</a></li>
+                    <li><a href="#" data-nav="gallery">Galeri</a></li>
+                    <li><a href="#" data-nav="testimonials">Testimoni</a></li>
+                    <li><a href="#" data-nav="contact">Lokasi</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- HOME SECTION -->
+    <section class="page-section" id="home-section">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="fas fa-star"></i> 4.8 ★ (1.200+ ulasan) • Specialty Coffee</div>
+                    <h1>Ruang hangat untuk kopi & ide</h1>
+                    <p>Nikmati kopi specialty, suasana homey aesthetic, indoor & outdoor, WFC friendly di jantung Malang.</p>
+                    <a href="#" class="btn btn-primary" data-nav="menu"><i class="fas fa-book-open"></i> Lihat Menu </a>
+                    <a href="https://wa.me/6282233404040?text=Halo%20Kismo%20Coffee%20House" class="btn btn-outline" style="margin-left: 12px;"><i class="fab fa-whatsapp"></i> Reservasi Meja</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section-title">
+                <h2>Kenapa Kismo Coffee?</h2>
+                <p>Tempat nongkrong favorit anak Malang yang mengutamakan kualitas & kenyamanan</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card scroll-animation"><i class="fas fa-seedling"></i><h4>Specialty Beans</h4><small>Kopi pilihan dari roaster terbaik</small></div>
+                <div class="feature-card scroll-animation"><i class="fas fa-laptop"></i><h4>Work Friendly</h4><small>Meeting Room & Wifi</small></div>
+                <div class="feature-card scroll-animation"><i class="fas fa-utensils"></i><h4>Fusion Menu</h4><small>Indonesia & western</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION (MENU BOOK PAGES) -->
+    <section class="page-section" id="menu-section" style="background: #FEF9F2;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Menu Kismo</h2>
+                <p>Klik pada halaman menu untuk memperbesar & melihat detail lebih jelas</p>
+            </div>
+            <div class="menu-grid" id="menuGrid"></div>
+        </div>
+    </section>
+
+    <!-- GALLERY AMBIANCE (asimetris OOB style) -->
+    <section class="page-section" id="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Suasana Kismo Coffee</h2>
+                <p>Interior hangat, outdoor rindang, sudut instagramable</p>
+            </div>
+            <div class="gallery-masonry" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section class="page-section" id="testimonials-section" style="background: #FEF9F2;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Pelanggan</h2>
+                <p>Review dari pengunjung setia Kismo Coffee House</p>
+            </div>
+            <div class="testi-grid" id="testiGrid"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT + MAP (dengan nomor tambahan & IG) -->
+    <section class="page-section" id="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Temukan Kami</h2>
+            </div>
+            <div class="contact-row">
+                <div class="contact-info">
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-clock"></i></div><div><strong>Jam Operasional</strong><br>Setiap hari • 07.00 – 22.00</div></div>
+                    
+                    <!-- Dua nomor telepon/WA -->
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-phone-alt"></i></div><div><strong>Telepon / WA </strong><br><a href="https://wa.me/6282233404040" style="color: var(--brown); text-decoration: none;">+62 822-3340-4040</a></div></div>
+                    <div class="info-item"><div class="info-icon"><i class="fab fa-whatsapp"></i></div><div><strong>Telepon / WA </strong><br><a href="https://wa.me/6281936051915" style="color: var(--brown); text-decoration: none;">+62 819-3605-1915</a></div></div>
+                    
+                    <!-- Instagram -->
+                    <div class="info-item"><div class="info-icon"><i class="fab fa-instagram"></i></div><div><strong>Instagram</strong><br><a href="https://instagram.com/kismo.house" target="_blank" rel="noopener noreferrer" style="color: var(--brown); text-decoration: none;">@kismo.house</a></div></div>
+                    
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Alamat</strong><br>Jl. Baiduri Sepah No.4, Tlogomas, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144</div></div>
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-wifi"></i></div><div><strong>Fasilitas</strong><br>WiFi • Meeting Room • Toilet • Mushola</div></div>
+                    
+                    <!-- Tombol WhatsApp (tetap mengarah ke nomor utama, namun pengguna bisa melihat kedua nomor di atas) -->
+                    <a href="https://wa.me/6282233404040?text=Halo%20Kismo%20Coffee%20House" class="btn btn-wa" style="margin-top: 10px; display: inline-flex;"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.3571685635675!2d112.608087!3d-7.944994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7883d7e7e7e7e7%3A0x7e7e7e7e7e7e7e7e!2sJl.%20Baiduri%20Sepah%20No.4%2C%20Tlogomas%2C%20Kec.%20Lowokwaru%2C%20Kota%20Malang%2C%20Jawa%20Timur%2065144!5e0!3m2!1sid!2sid!4v1712456789012!5m2!1sid!2sid" allowfullscreen="" loading="lazy" title="Peta Kismo Coffee House Malang"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-mug-hot"></i> Kismo Coffee House – Specialty Coffee & Cozy Space</p>
+            <p style="margin-top: 8px; font-size:0.8rem;">Jl. Baiduri Sepah No.4, Tlogomas, Lowokwaru, Malang | Buka 07.00-22.00</p>
+            <p style="margin-top: 12px;">© 2026 Kismo Coffee House. Rajanya ngopi santai di Malang.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== 1. MENU BOOK: 37 halaman JPG lokal ==========
+        // Membuat daftar file menu book sesuai nama file yang diberikan
+        const totalMenuPages = 37;
+        const menuBookFiles = [];
+        for (let i = 1; i <= totalMenuPages; i++) {
+            const pageNum = String(i).padStart(4, '0');
+            const fileName = `Kismo Menu Book Jan 26_pages-to-jpg-${pageNum}.jpg`;
+            menuBookFiles.push(fileName);
+        }
+
+        // ========== 2. GALLERY AMBIANCE (26 gambar screenshot) ==========
+        const allGalleryFiles = [
+            "Screenshot_20260410-084037.jpg", "Screenshot_20260410-084044.jpg", "Screenshot_20260410-084050.jpg",
+            "Screenshot_20260410-084102.jpg", "Screenshot_20260410-084108.jpg", "Screenshot_20260410-084113.jpg",
+            "Screenshot_20260410-084125.jpg", "Screenshot_20260410-084137.jpg", "Screenshot_20260410-084148.jpg",
+            "Screenshot_20260410-084153.jpg", "Screenshot_20260410-084200.jpg", "Screenshot_20260410-084208.jpg",
+            "Screenshot_20260410-084215.jpg", "Screenshot_20260410-084240.jpg", "Screenshot_20260410-084246.jpg",
+            "Screenshot_20260410-084251.jpg", "Screenshot_20260410-084256.jpg", "Screenshot_20260410-084301.jpg",
+            "Screenshot_20260410-084306.jpg", "Screenshot_20260410-084312.jpg", "Screenshot_20260410-084317.jpg",
+            "Screenshot_20260410-084326.jpg", "Screenshot_20260410-084331.jpg", "Screenshot_20260410-084357.jpg",
+            "Screenshot_20260410-084416.jpg", "Screenshot_20260410-084428.jpg"
+        ];
+        
+        const galleryItems = [];
+        const largeIndices = [0, 6, 12, 18];
+        const tallIndices = [3, 9, 15, 21];
+        allGalleryFiles.forEach((file, idx) => {
+            let size = "normal";
+            if (largeIndices.includes(idx)) size = "large";
+            if (tallIndices.includes(idx)) size = "tall";
+            galleryItems.push({ src: file, size: size });
+        });
+
+        // testimoni tetap
+        const testimonials = [
+            { name: "Nazira Irani", text: "Masyaallah bgt, dari segi tempatnya aesthetic semua dari segi manapun. Dan yg bikin lebih betah disini pelayanan nya keren bgt apalagi waiternya best”, admin juga respon baik banget 🥹😍 dan yg pasti makanan sama minumnya juga uda berasa makan makanan hotel dari plattingnya sama rasa nya bestttttttt!!!!!. Next bakal kesini lagi 🫵🏻💖", rating: 5 },
+            { name: "vind", text: "Tempatnya nyaman bgt, sepertinya ini bangunan rumah yg di pugar, jadi berasa homey bgt. Ada indoor smoking nya juga. Pelayanan staff nya juga bagus, ramah dan sopan. Gw cobain salad nya enak, porsi nya banyak dan dressing sauce nya cocok.", rating: 5 },
+            { name: "rene santa", text: "ALL BEST 10/10. Resto keluarga yang makanannya ENAK SEMUAAA. Kesana buat kerja tapi malah dimanjain banget sama makanan dan minumannya wkwk. Tempatnya bagus banget, besar, luas, bersih. Toiletnya? Gonggg! Staffnya ramah banget-banget. Definitely recommend this place ke semua orang yang ada di dunia", rating: 5 },
+            { name: "Dewi Wahyuni", text: "Salah satu cafe di Malang dengan vibes homey dan tersedia beberap area berbeda, sehingga untuk wfc maupun ngobrol lama di situ sangat available (bonusnya bisa foto-foto cantik). Para staff juga sangat ramah. Terkait harga sudah sesuai dengan rasa dan tempat yang ditawarkan. Cafe yang akan tak kunjungi lagi kl ke Malang.", rating: 5 }
+        ];
+
+        // Lightbox state
+        let currentImageIndex = 0;
+        let menuImagesList = []; // akan diisi saat render
+
+        function openLightbox(index) {
+            if (!menuImagesList.length) return;
+            currentImageIndex = index;
+            const imgUrl = menuImagesList[currentImageIndex];
+            const lightboxImg = document.getElementById('lightboxImage');
+            if (lightboxImg) lightboxImg.src = imgUrl;
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextImage() {
+            if (menuImagesList.length === 0) return;
+            currentImageIndex = (currentImageIndex + 1) % menuImagesList.length;
+            document.getElementById('lightboxImage').src = menuImagesList[currentImageIndex];
+        }
+
+        function prevImage() {
+            if (menuImagesList.length === 0) return;
+            currentImageIndex = (currentImageIndex - 1 + menuImagesList.length) % menuImagesList.length;
+            document.getElementById('lightboxImage').src = menuImagesList[currentImageIndex];
+        }
+
+        // Render menu book (halaman menu dalam bentuk grid, klik untuk zoom)
+        function renderMenuBook() {
+            const container = document.getElementById('menuGrid');
+            if (!container) return;
+            // Simpan daftar URL untuk lightbox
+            menuImagesList = menuBookFiles.map(file => encodeURI(file));
+            container.innerHTML = menuBookFiles.map((file, idx) => {
+                const encodedSrc = encodeURI(file);
+                const pageNumber = idx + 1;
+                return `
+                    <div class="menu-card scroll-animation" data-menu-index="${idx}">
+                        <div class="menu-img">
+                            <img src="${encodedSrc}" alt="Halaman Menu Kismo ${pageNumber}" loading="lazy" onerror="this.src='https://placehold.co/400x500?text=Menu+Kismo+${pageNumber}'">
+                        </div>
+                        <div class="menu-info">
+                            <div class="page-label"><i class="far fa-file-image"></i> Halaman ${pageNumber}</div>
+                            <div class="menu-category">Klik untuk perbesar</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Attach click event ke setiap menu-card
+            document.querySelectorAll('.menu-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const idxAttr = card.getAttribute('data-menu-index');
+                    if (idxAttr !== null) {
+                        const idxNum = parseInt(idxAttr, 10);
+                        if (!isNaN(idxNum)) openLightbox(idxNum);
+                    }
+                });
+            });
+            triggerScroll();
+        }
+
+        // Render Gallery suasana
+        function renderGallery() {
+            const container = document.getElementById('galleryGrid');
+            if (!container) return;
+            container.innerHTML = galleryItems.map(item => `
+                <div class="gallery-item ${item.size === 'large' ? 'large' : item.size === 'tall' ? 'tall' : ''} scroll-animation">
+                    <img src="${item.src}" loading="lazy" alt="Suasana Kismo Coffee" onerror="this.src='https://placehold.co/600x400?text=Kismo+Gallery'">
+                </div>
+            `).join('');
+            triggerScroll();
+        }
+
+        function renderTestimonials() {
+            const container = document.getElementById('testiGrid');
+            if (!container) return;
+            container.innerHTML = testimonials.map(t => {
+                let stars = '';
+                const full = Math.floor(t.rating);
+                for(let i=0;i<full;i++) stars += '<i class="fas fa-star"></i>';
+                if(t.rating % 1 !== 0) stars += '<i class="fas fa-star-half-alt"></i>';
+                return `
+                    <div class="testi-card scroll-animation">
+                        <div class="testi-text">“${t.text}”</div>
+                        <div class="testi-author">— ${t.name}</div>
+                        <div class="rating">${stars} ${t.rating}</div>
+                    </div>
+                `;
+            }).join('');
+            triggerScroll();
+        }
+
+        // ========== PAGE NAVIGATION ==========
+        const sections = ['home', 'menu', 'gallery', 'testimonials', 'contact'];
+        function showSection(sectionId) {
+            sections.forEach(sec => {
+                const el = document.getElementById(`${sec}-section`);
+                if (el) el.style.display = sec === sectionId ? 'block' : 'none';
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                const navVal = link.getAttribute('data-nav');
+                if (navVal === sectionId) link.classList.add('active');
+                else link.classList.remove('active');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                triggerScroll();
+                // refresh jika perlu
+                if (sectionId === 'menu') renderMenuBook();
+                if (sectionId === 'gallery') renderGallery();
+                if (sectionId === 'testimonials') renderTestimonials();
+            }, 100);
+        }
+
+        function setInitialDisplay() {
+            sections.forEach(sec => {
+                const sectionEl = document.getElementById(`${sec}-section`);
+                if (sectionEl) sectionEl.style.display = sec === 'home' ? 'block' : 'none';
+            });
+            const homeLink = document.querySelector('.nav-links a[data-nav="home"]');
+            if (homeLink) homeLink.classList.add('active');
+        }
+
+        // Scroll animation
+        let animObserver;
+        function triggerScroll() {
+            if (animObserver) animObserver.disconnect();
+            const animated = document.querySelectorAll('.scroll-animation');
+            animObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        animObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+            animated.forEach(el => animObserver.observe(el));
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        // Event listeners navigation
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-nav');
+                if (page && sections.includes(page)) {
+                    showSection(page);
+                    closeMenu();
+                }
+            });
+        });
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSection('home');
+                closeMenu();
+            });
+        }
+        document.querySelectorAll('[data-nav="menu"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSection('menu');
+                closeMenu();
+            });
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+
+        // Lightbox event
+        document.getElementById('closeLightbox')?.addEventListener('click', closeLightbox);
+        document.getElementById('prevImageBtn')?.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+        document.getElementById('nextImageBtn')?.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+        document.getElementById('lightboxModal')?.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightboxModal')) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('lightboxModal');
+            if (modal && modal.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'ArrowRight') nextImage();
+            }
+        });
+
+        // Inisialisasi semua konten
+        renderMenuBook();
+        renderGallery();
+        renderTestimonials();
+        setInitialDisplay();
+        triggerScroll();
+        window.addEventListener('load', () => {
+            triggerScroll();
+        });
+    </script>
+</body>
+</html>
